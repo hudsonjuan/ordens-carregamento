@@ -27,6 +27,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Generate application key
 RUN php artisan key:generate
 
+# Run migrations
+RUN php artisan migrate --force
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
