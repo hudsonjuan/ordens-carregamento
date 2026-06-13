@@ -42,5 +42,9 @@ EXPOSE 80
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
+# Configure Apache DocumentRoot to point to Laravel public directory
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/public>|g' /etc/apache2/sites-available/000-default.conf
+
 # Start Apache with custom script
 CMD ["/usr/local/bin/start.sh"]
