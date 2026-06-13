@@ -5,6 +5,7 @@ services:
     env: docker
     plan: free
     dockerContext: .
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
