@@ -15,6 +15,6 @@ php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
 
-# Start the server
-echo "Starting server..."
-php artisan serve --host=0.0.0.0 --port=$PORT
+# Start Apache
+echo "Starting Apache..."
+apache2-foreground
