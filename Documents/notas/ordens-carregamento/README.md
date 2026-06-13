@@ -56,3 +56,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Deploy no Railway
+
+Este projeto está configurado para deploy no Railway com PostgreSQL.
+
+### Configuração das Variáveis de Ambiente
+
+No painel do Railway, configure as seguintes variáveis em "Variables":
+
+**Variáveis obrigatórias:**
+- `APP_KEY` = `base64:W7jb3pB0Kzu+UljMXrNZvPSpsTiabhYqpaETS2VK5F8=`
+- `APP_ENV` = `production`
+- `APP_DEBUG` = `false`
+- `APP_URL` = `sua-url-do-railway.up.railway.app`
+
+**Variáveis do PostgreSQL (geradas automaticamente pelo Railway):**
+- `DB_CONNECTION` = `pgsql`
+- `DB_HOST` = `${RAILWAY_POSTGRES_HOST}`
+- `DB_PORT` = `${RAILWAY_POSTGRES_PORT}`
+- `DB_DATABASE` = `${RAILWAY_POSTGRES_DATABASE}`
+- `DB_USERNAME` = `${RAILWAY_POSTGRES_USER}`
+- `DB_PASSWORD` = `${RAILWAY_POSTGRES_PASSWORD}`
+
+### Passos para Deploy
+
+1. Adicione um serviço PostgreSQL no seu projeto Railway
+2. Configure as variáveis de ambiente acima
+3. Faça o deploy do projeto
+4. As migrações serão executadas automaticamente durante o build
