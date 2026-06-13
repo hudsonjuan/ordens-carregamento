@@ -27,8 +27,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Generate application key
 RUN php artisan key:generate
 
-# Run migrations
-RUN php artisan migrate --force
+# Copy start script
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
@@ -41,5 +42,5 @@ EXPOSE 80
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Start Apache with custom script
+CMD ["/usr/local/bin/start.sh"]
